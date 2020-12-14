@@ -12,8 +12,8 @@ var createScene = function(props) {
   return scene;
 };
 
-var maf = function(props){
-  var { data } = props;
+var maf = function(data){
+  
   const answer = addition(data);
   return answer;
 }

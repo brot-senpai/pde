@@ -1,5 +1,5 @@
-var addition = function(props){
-  var answer = props * 50;
+var addition = function(data){
+  var answer = data * 50;
   
   return answer;
 }
