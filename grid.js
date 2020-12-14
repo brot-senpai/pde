@@ -1,4 +1,4 @@
-import {createScene} from 'createScene';
+import {createScene} from './createScene';
 
 var dynamicGrid = function(props){
   
