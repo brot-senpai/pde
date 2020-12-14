@@ -1,6 +1,7 @@
 var addition = function(props){
-  var {data} = props;
-  return (data*2);
+  var answer = props * 50;
+  
+  return answer;
 }
 
 export {addition}
