@@ -50,7 +50,7 @@ class Babylon:
       
     <script type="module">
           
-    import { dynamicGrid } from 'https://cdn.jsdelivr.net/gh/brot-senpai/pde@0.4/grid.js';
+    import { dynamicGrid } from 'https://cdn.jsdelivr.net/gh/brot-senpai/pde@0.5/grid.js';
         const canvas = document.getElementById("renderCanvas"); // Get the canvas element
         const engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
         var data = %s;
