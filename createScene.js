@@ -1,4 +1,4 @@
-import {addition} from './addition';
+import {addition} from 'https://cdn.jsdelivr.net/gh/brot-senpai/pde@latest/addition.js';
 
 var createScene = function(props) {
 	var {engine, canvas} = props;
