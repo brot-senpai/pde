@@ -41,63 +41,29 @@ class Babylon:
             }
       </style>
     </head>
-    <canvas id="renderCanvas"></canvas>
   """)
 
-	def scene(self):
+	def scene(self, x):
 		return(
-		"""		
+		"""
+		<canvas id="renderCanvas"></canvas>
       
-    <script type="text/javascript">
+    <script type="module">
           
-    var canvas = document.getElementById("renderCanvas");
-
-    var engine = null;
-    var scene = null;
-    var sceneToRender = null;
-    var createDefaultEngine = function() { return new BABYLON.Engine(canvas, 
-      true, { preserveDrawingBuffer: true, stencil: true,  
-      disableWebGL2Support: false}); };
-    const createScene = function () {
-      const scene = new BABYLON.Scene(engine);
-      scene.clearColor = new BABYLON.Color3%s;
-      const camera = new BABYLON.ArcRotateCamera("Camera", 3 * Math.PI / 2, 
-        3 * Math.PI / 8, 30, new BABYLON.Vector3.Zero(), scene)
-      camera.attachControl(canvas, true);
-      const light = new BABYLON.HemisphericLight("light", 
-      new BABYLON.Vector3(1, 1, 0), scene);
-      return scene;
-
-    };
-
-    var engine;
-    var scene;
-    initFunction = async function() {               
-      var asyncEngineCreation = async function() {
-      try {
-        return createDefaultEngine();
-        } catch(e) {
-        console.log("the available createEngine function failed. Creating the default engine instead");
-        return createDefaultEngine();
-        }
-      }
-
-      engine = await asyncEngineCreation();
-      if (!engine) throw 'engine should not be null.';
-    	scene = createScene();};
-      initFunction().then(() => {sceneToRender = scene        
+    import { dynamicGrid } from 'https://cdn.jsdelivr.net/gh/brot-senpai/pde@0.2/grid.js';
+        const canvas = document.getElementById("renderCanvas"); // Get the canvas element
+        const engine = new BABYLON.Engine(canvas, true); // Generate the BABYLON 3D engine
+        var data = %s;
+        const scene = dynamicGrid(engine, canvas); 
+  
         engine.runRenderLoop(function () {
-        if (sceneToRender && sceneToRender.activeCamera) {
-        sceneToRender.render();
-          }
-      });
-      });
-
+                scene.render();
+        });
       
-      window.addEventListener("resize", function () {
-          engine.resize();
+        window.addEventListener("resize", function () {
+                engine.resize();
         });
     </script>
-		""" % str(self.backgroundColor)
+		""" % str(x)
   )
 
