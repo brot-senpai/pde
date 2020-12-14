@@ -8,7 +8,7 @@ var createScene = function(props) {
     const light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(1, 1, 0), scene);
 
     const sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {segments: 64, diameter: 2});
-    console.log(addition(data))
+    console.log(data)
   return scene;
 };
 
