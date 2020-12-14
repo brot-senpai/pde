@@ -1,4 +1,4 @@
-import {createScene} from './createScene';
+import {createScene} from 'https://cdn.jsdelivr.net/gh/brot-senpai/pde@0.4/grid.js';
 
 var dynamicGrid = function(props){
   
