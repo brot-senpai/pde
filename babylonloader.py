@@ -41,12 +41,12 @@ class Babylon:
             }
       </style>
     </head>
+    <canvas id="renderCanvas"></canvas>
   """)
 
 	def scene(self):
 		return(
-		"""
-		<canvas id="renderCanvas"></canvas>
+		"""		
       
     <script type="text/javascript">
           
@@ -61,14 +61,11 @@ class Babylon:
     const createScene = function () {
       const scene = new BABYLON.Scene(engine);
       scene.clearColor = new BABYLON.Color3%s;
-      const camera = new BABYLON.ArcRotateCamera("Camera", Math.PI / 2, 
-      Math.PI / 2, 2, new BABYLON.Vector3(0, 0, 5), scene);
+      const camera = new BABYLON.ArcRotateCamera("Camera", 3 * Math.PI / 2, 
+        3 * Math.PI / 8, 30, new BABYLON.Vector3.Zero(), scene)
       camera.attachControl(canvas, true);
       const light = new BABYLON.HemisphericLight("light", 
       new BABYLON.Vector3(1, 1, 0), scene);
-      var dia = 1;
-      const sphere = BABYLON.MeshBuilder.CreateSphere("sphere", 
-                {segments: 64, diameter: dia});
       return scene;
 
     };
