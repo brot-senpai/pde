@@ -1,7 +1,6 @@
 var createScene = function(props) {
   var {engine, canvas} = props;
-    canvas.style.width = "100%";
-    canvas.style.height = "100%";
+    
     var scene = new BABYLON.Scene(engine);
     scene.clearColor = BABYLON.Color3.White();
     const camera = new BABYLON.ArcRotateCamera("Camera", 3 * Math.PI / 2, 
