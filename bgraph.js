@@ -542,33 +542,7 @@ function locatorGUI(textColor){
 }
     
     
-      const worldData = {
-        cameraDist: 4,
-        backgroundColor: new BABYLON.Color3(0,0,0),
-      }
-        var canvas = document.getElementById("renderCanvas");
-        var w = new World({canvas, worldData})
-        var scene = w.scene;
-        w.engine.runRenderLoop(function () {
-                    scene.render();
-            });
-
-            window.addEventListener("resize", function () {
-                    w.engine.resize();
-            });
-        ControlGrid({scene})
-        const sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {});
-        const gridData = {
-            xmin: -4,
-            ymin: -4,
-            zmin: 0,
-            xmax: 4,
-            ymax: 4,
-            zmax: 4,
-            resolution: 0.5,
-            alpha: 0.5,
-          }
-        var grid = new RectGridClass({scene, gridData});
+export { World };
         
     
     
