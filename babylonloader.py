@@ -50,7 +50,7 @@ class Babylon:
       
     <script type="module">
           
-    import { World } from 'https://cdn.jsdelivr.net/gh/brot-senpai/pde@0.92/bgraph.js';
+    import { World, ControlGrid } from 'https://cdn.jsdelivr.net/gh/brot-senpai/pde@0.93/bgraph.js';
 
         const worldData = {
         cameraDist: 4,
