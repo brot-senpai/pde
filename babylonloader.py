@@ -50,12 +50,13 @@ class Babylon:
       
     <script type="module">
           
-    import { World } from 'https://cdn.jsdelivr.net/gh/brot-senpai/pde@0.91/bgraph.js';
+    import { World } from 'https://cdn.jsdelivr.net/gh/brot-senpai/pde@0.92/bgraph.js';
 
         const worldData = {
         cameraDist: 4,
         backgroundColor: new BABYLON.Color3(0,0,0),
       }
+        var canvas = document.getElementById("renderCanvas");
         var w = new World({canvas, worldData})
         var scene = w.scene;
         w.engine.runRenderLoop(function () {
