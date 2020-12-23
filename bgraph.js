@@ -542,7 +542,7 @@ function locatorGUI(textColor){
 }
     
     
-export { World, ControlGrid };
+export { World, ControlGrid, RectGridClass };
         
     
     
