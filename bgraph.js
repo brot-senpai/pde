@@ -603,6 +603,7 @@ class locatorClass {
     
   }
 }
+let c;
 function Locator(props){
   var { scene } = props;
   c = new locatorClass({scene});
