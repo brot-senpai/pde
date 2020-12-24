@@ -50,7 +50,7 @@ class Babylon:
       
     <script type="module">
           
-    import {DBControl, Axis, World, RectGridClass, Rect3D, locatorClass} from 'https://cdn.jsdelivr.net/gh/brot-senpai/pde@0.96/bgraph.js';
+    import {DBControl, Axis, World, RectGridClass, Rect3D, locatorClass} from 'https://cdn.jsdelivr.net/gh/brot-senpai/pde@0.97/bgraph.js';
        
        
         var canvas = document.getElementById("renderCanvas"); 
