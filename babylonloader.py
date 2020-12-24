@@ -50,36 +50,38 @@ class Babylon:
       
     <script type="module">
           
-    import { World, ControlGrid, RectGridClass } from 'https://cdn.jsdelivr.net/gh/brot-senpai/pde@0.94/bgraph.js';
+    import {DBControl, Axis, World, RectGridClass, Rect3D, locatorClass} from 'https://cdn.jsdelivr.net/gh/brot-senpai/pde@0.95/bgraph.js';
+       
+       
+        var canvas = document.getElementById("renderCanvas"); 
+        const engine = new BABYLON.Engine(canvas, true);  
+        const scene = new BABYLON.Scene(engine);
+
+        const Data = %s;
+        const solution = Data.solution;
+        const resolution = Data.resolution;
+
+
+        const gridData = {
+          xmin: Data.xinitial,
+          ymin: Data.umin,
+          zmin: Data.tinitial,
+          xmax: Data.xfinal,
+          ymax: Data.umax,
+          zmax: Data.tfinal,
+          resolution: 0.5,
+          alpha: 0.5,
+        }
+        const dz = Data.tfinal - Data.tinitial;
 
         const worldData = {
-        cameraDist: 4,
-        backgroundColor: new BABYLON.Color3(0,0,0),
-      }
-        var canvas = document.getElementById("renderCanvas");
-        var w = new World({canvas, worldData})
-        var scene = w.scene;
-        w.engine.runRenderLoop(function () {
-                    scene.render();
-            });
-
-            window.addEventListener("resize", function () {
-                    w.engine.resize();
-            });
-        ControlGrid({scene})
-        const sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {});
-        const gridData = {
-            xmin: -4,
-            ymin: -4,
-            zmin: 0,
-            xmax: 4,
-            ymax: 4,
-            zmax: 4,
-            resolution: 0.5,
-            alpha: 0.5,
-          }
-        var grid = new RectGridClass({scene, gridData});
-        var d = %s;
+          cameraDist: dz,
+          backgroundColor: new BABYLON.Color3(0,0,0),
+        }
+    
+        var grid = new RectGridClass({scene,gridData});  
+        var curve = new Rect3D({scene, solution, resolution});
+        var db = DBControl({scene, worldData});
     </script>
 		""" % str(x)
   )
