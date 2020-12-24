@@ -1,4 +1,3 @@
-import * as BABYLON from 'babylonjs';
 
 class DashBoard {
   constructor(props){
