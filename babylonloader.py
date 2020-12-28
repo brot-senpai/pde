@@ -1,6 +1,6 @@
-#from IPython.display import HTML
+from IPython.display import HTML
 
-class Babylon:
+class BLoader:
 	def __init__(self, backgroundColor=(1, 1, 1)):
 		self.backgroundColor = backgroundColor
 
@@ -50,7 +50,7 @@ class Babylon:
       
     <script type="module">
           
-    import {DBControl, Axis, World, RectGridClass, Rect3D, locatorClass} from 'https://cdn.jsdelivr.net/gh/brot-senpai/pde@0.98/bgraph.js';
+    import {DBControl, Axis, World, RectGridClass, Rect3D, locatorClass} from 'https://cdn.jsdelivr.net/gh/brot-senpai/pde@0.99/bgraph.js';
        
        
         var canvas = document.getElementById("renderCanvas"); 
@@ -61,6 +61,15 @@ class Babylon:
         const solution = Data.solution;
         const resolution = Data.resolution;
 
+        var gridColor = new BABYLON.Color3(1, 1, 1);
+        var bgColor = new BABYLON.Color3(0,0,0);
+        var dbColor = "yellow";
+
+        if(Data.backgroundColor==="light"){
+          gridColor = new BABYLON.Color3(0, 0, 0);
+          bgColor = new BABYLON.Color3(1, 1, 1);
+          dbColor = "black";
+        }
 
         const gridData = {
           xmin: Data.xinitial,
@@ -71,12 +80,14 @@ class Babylon:
           zmax: Data.tfinal,
           resolution: 0.5,
           alpha: 0.5,
+          gridColor: gridColor,
         }
         const dz = Data.tfinal - Data.tinitial;
 
         const worldData = {
           cameraDist: dz,
-          backgroundColor: new BABYLON.Color3(0,0,0),
+          backgroundColor: bgColor,
+          DBColor:dbColor,
         }
     
         var grid = new RectGridClass({scene,gridData});  
@@ -85,4 +96,13 @@ class Babylon:
     </script>
 		""" % str(x)
   )
+
+class bgraph:
+
+  def plot3D(self, data):
+    self.bg = BLoader()
+    display(HTML(self.bg.header()))
+    display(HTML(self.bg.scene(data)))
+  
+
 

@@ -8,7 +8,7 @@ class DashBoard {
     this.gbox = new BABYLON.GUI.Rectangle();
     this.advancedTexture.addControl(this.gbox);
     this.advancedTexture.addControl(this.grid);
-    this.DBcolor = "yellow";
+    this.DBcolor = props.worldData.DBColor;
     this.gridWidth = "250px";
     this.gridOpenHeight = "310px";
     this.gboxOpenHeight = "160px";
@@ -79,7 +79,7 @@ function DBControl(props){
   
   var scene = props.scene;
   var worldData = props.worldData;
-  var db = new DashBoard({scene});
+  var db = new DashBoard({scene, worldData});
   headerControl(db);
   locatorControl(db);  
   worldControl({db, worldData});
@@ -111,6 +111,7 @@ var worldControl = (props) =>{
   
   var bgButton = new BABYLON.GUI.Button();
   bgButton.cornerRadius = 2.5
+  bgButton.color = db.DBcolor;
   bgButton.addControl(pickerText);
   bgButton.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
   bgButton.onPointerDownObservable.add(function(){
@@ -173,7 +174,7 @@ var headerControl = (db) =>{
     if(!DBisOpen){
       db.grid.height = db.gridOpenHeight;
       db.gbox.height = db.gboxOpenHeight;
-      db.gbox.color = "yellow";
+      db.gbox.color = db.DBcolor;
       db.grid.removeControl(db.tb2);
       db.grid.addControl(db.tb1, 0, 1);
       DBisOpen = true;
@@ -318,6 +319,7 @@ class World {
     this.camera = new BABYLON.ArcRotateCamera("ArcRotateCamera", -.85, .8, cameraDist, 
       new BABYLON.Vector3(0, 0, 0), this.scene);
     this.camera.attachControl(this.canvas, true);
+    this.camera.wheelPrecision = 10;
   }
   Background(color){
     this.scene.clearColor = color;
@@ -353,7 +355,7 @@ class RectGridClass {
     this.zf = Math.ceil(this.zmax);
     this.resolution = props.gridData.resolution;
     this.size = 3;
-    this.gridColr = new BABYLON.Color3(1, 1, 1);
+    this.gridColr = props.gridData.gridColor;
     this.xyPlane();
     this.xzPlane();
     this.yzPlane();
@@ -638,7 +640,8 @@ function locatorGUI(textColor){
   onRadio.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
 
   var locatorButton = new BABYLON.GUI.Button();
-  locatorButton.cornerRadius = 2.5
+  locatorButton.cornerRadius = 2.5;
+  locatorButton.color = textColor;
   locatorButton.addControl(onRadio);
   locatorButton.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
 
